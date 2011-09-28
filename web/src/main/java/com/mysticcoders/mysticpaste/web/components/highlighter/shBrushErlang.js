@@ -1,52 +1,23 @@
-/**
- * SyntaxHighlighter
- * http://alexgorbatchev.com/SyntaxHighlighter
- *
- * SyntaxHighlighter is donationware. If you are using it, please donate.
- * http://alexgorbatchev.com/SyntaxHighlighter/donate.html
- *
- * @version
- * 3.0.83 (July 02 2010)
- * 
- * @copyright
- * Copyright (C) 2004-2010 Alex Gorbatchev.
- *
- * @license
- * Dual licensed under the MIT and GPL licenses.
- */
-;(function()
-{
-	// CommonJS
-	typeof(require) != 'undefined' ? SyntaxHighlighter = require('shCore').SyntaxHighlighter : null;
+// WTFPL licensed
+SyntaxHighlighter.brushes.Erlang = function() {
+    var keywords = 'after begin case catch cond end fun if let of query receive when '+
+        'define record export import include include_lib ifdef ifndef else endif undef '+
+        'apply attribute call do in letrec module primop try';
+  
+    this.values = new Object();
+    this.values.regex = new RegExp('[^\\w"\'](_?[A-Z]\\w*)', 'g');
+    this.values.exec = function(value) { m = this.regex.exec(value);  if (m && m.length) {m[0] = m[0].substring(1, m[0].length); ++m.index;} return m;}
 
-	function Brush()
-	{
-		// Contributed by Jean-Lou Dupont
-		// http://jldupont.blogspot.com/2009/06/erlang-syntax-highlighter.html  
+    this.regexList = [
+       { regex: new RegExp('%.*$', 'gm'),    css: 'comments' },   // one line comments  
+       { regex: SyntaxHighlighter.regexLib.doubleQuotedString,     css: 'string' },   // strings  
+       { regex: SyntaxHighlighter.regexLib.singleQuotedString,     css: 'plain' },   // strings  
+       { regex: new RegExp(this.getKeywords(keywords), 'gm'),  css: 'keyword' },  // Erlang keyword  
+       { regex: new RegExp('\\?\\w*', 'gm'), css: 'erlmacros'},    
+       { regex: this.values, css: 'erlvalues'},  
+       { regex: new RegExp('\\w+/\\d+', 'gm'), css: 'functions'}
+      ];
+}
 
-		// According to: http://erlang.org/doc/reference_manual/introduction.html#1.5
-		var keywords = 'after and andalso band begin bnot bor bsl bsr bxor '+
-			'case catch cond div end fun if let not of or orelse '+
-			'query receive rem try when xor'+
-			// additional
-			' module export import define';
-
-		this.regexList = [
-			{ regex: new RegExp("[A-Z][A-Za-z0-9_]+", 'g'), 			css: 'constants' },
-			{ regex: new RegExp("\\%.+", 'gm'), 						css: 'comments' },
-			{ regex: new RegExp("\\?[A-Za-z0-9_]+", 'g'), 				css: 'preprocessor' },
-			{ regex: new RegExp("[a-z0-9_]+:[a-z0-9_]+", 'g'), 			css: 'functions' },
-			{ regex: SyntaxHighlighter.regexLib.doubleQuotedString,		css: 'string' },
-			{ regex: SyntaxHighlighter.regexLib.singleQuotedString,		css: 'string' },
-			{ regex: new RegExp(this.getKeywords(keywords),	'gm'),		css: 'keyword' }
-			];
-	};
-
-	Brush.prototype	= new SyntaxHighlighter.Highlighter();
-	Brush.aliases	= ['erl', 'erlang'];
-
-	SyntaxHighlighter.brushes.Erland = Brush;
-
-	// CommonJS
-	typeof(exports) != 'undefined' ? exports.Brush = Brush : null;
-})();
+SyntaxHighlighter.brushes.Erlang.prototype = new SyntaxHighlighter.Highlighter();
+SyntaxHighlighter.brushes.Erlang.aliases = ['erlang', 'erl'];

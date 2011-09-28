@@ -35,26 +35,34 @@ public class HighlighterPanel extends Panel {
             = new ArrayList<LanguageSyntax>();
 
     static {
-        types.add(new LanguageSyntax("as3", "Applescript", "shBrushAS3.js"));
+        types.add(new LanguageSyntax("applescript", "AppleScript", "shBrushAppleScript.js"));
+        types.add(new LanguageSyntax("as3", "ActionScript3", "shBrushAS3.js"));
         types.add(new LanguageSyntax("bash", "Bash", "shBrushBash.js"));
+        types.add(new LanguageSyntax("clojure", "Clojure", "shBrushClojure.js"));
+        types.add(new LanguageSyntax("cf", "ColdFusion", "shBrushColdFusion.js"));
         types.add(new LanguageSyntax("csharp", "C#", "shBrushCSharp.js"));
         types.add(new LanguageSyntax("cpp", "C / C++", "shBrushCpp.js"));
         types.add(new LanguageSyntax("css", "CSS", "shBrushCss.js"));
         types.add(new LanguageSyntax("delphi", "Delphi", "shBrushDelphi.js"));
         types.add(new LanguageSyntax("diff", "Diff", "shBrushDiff.js"));
+        types.add(new LanguageSyntax("erlang", "Erlang", "shBrushErlang.js"));
         types.add(new LanguageSyntax("groovy", "Groovy", "shBrushGroovy.js"));
         types.add(new LanguageSyntax("java", "Java", "shBrushJava.js"));
         types.add(new LanguageSyntax("js", "JavaScript", "shBrushJScript.js"));
         types.add(new LanguageSyntax("javafx", "JavaFX", "shBrushJavaFX.js"));
+        types.add(new LanguageSyntax("lua", "Lua", "shBrushLua.js"));
+        types.add(new LanguageSyntax("objc", "Objective-C", "shBrushObjectiveC.js"));
         types.add(new LanguageSyntax("perl", "Perl", "shBrushPerl.js"));
         types.add(new LanguageSyntax("php", "PHP", "shBrushPhp.js"));
         types.add(new LanguageSyntax("text", "Plain Text", "shBrushPlain.js"));
         types.add(new LanguageSyntax("powershell", "PowerShell", "shBrushPowerShell.js"));
         types.add(new LanguageSyntax("python", "Python", "shBrushPython.js"));
         types.add(new LanguageSyntax("ruby", "Ruby", "shBrushRuby.js"));
+        types.add(new LanguageSyntax("sass", "SASS", "shBrushSass.js"));
         types.add(new LanguageSyntax("scala", "Scala", "shBrushScala.js"));
         types.add(new LanguageSyntax("sql", "SQL", "shBrushSql.js"));
         types.add(new LanguageSyntax("vb", "VB / VB.NET", "shBrushVb.js"));
+        types.add(new LanguageSyntax("yaml", "YAML", "shBrushYaml.js"));
         types.add(new LanguageSyntax("xml", "XML / XHTML", "shBrushXml.js"));
     }
 
