@@ -47,6 +47,7 @@ public class HighlighterPanel extends Panel {
         types.add(new LanguageSyntax("diff", "Diff", "shBrushDiff.js"));
         types.add(new LanguageSyntax("erlang", "Erlang", "shBrushErlang.js"));
         types.add(new LanguageSyntax("groovy", "Groovy", "shBrushGroovy.js"));
+        types.add(new LanguageSyntax("html", "HTML", "shBrushXml.js"));
         types.add(new LanguageSyntax("java", "Java", "shBrushJava.js"));
         types.add(new LanguageSyntax("js", "JavaScript", "shBrushJScript.js"));
         types.add(new LanguageSyntax("javafx", "JavaFX", "shBrushJavaFX.js"));
