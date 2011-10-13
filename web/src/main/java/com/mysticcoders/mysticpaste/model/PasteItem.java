@@ -260,8 +260,7 @@ public class PasteItem implements Serializable {
                 }
                 for (; old_line_count <= del_end; ++old_line_count) {
                     diffText.append("- ").append(original.get(old_line_count)).append("\n");
-                    changedLines.add(lineIndex);
-                    lineIndex++;
+                    changedLines.add(++lineIndex);
                 }
             }
 
@@ -273,8 +272,7 @@ public class PasteItem implements Serializable {
 
                 for (; new_line_count <= add_end; ++new_line_count) {
                     diffText.append("+ ").append(revised.get(new_line_count)).append("\n");
-                    changedLines.add(lineIndex);
-                    lineIndex++;
+                    changedLines.add(++lineIndex);
                 }
 
             }

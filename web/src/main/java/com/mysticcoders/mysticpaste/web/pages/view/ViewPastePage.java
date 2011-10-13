@@ -137,12 +137,21 @@ public abstract class ViewPastePage extends BasePage {
             List<Integer> changedLines= (List<Integer>)diffOutput[0];       // TODO horrible horrible hackish thing, where do you get these things
             String diffText = (String)diffOutput[1];
 
+            StringBuilder sb = new StringBuilder();
+            for (Integer line : changedLines) {
+                sb.append(line).append(",");
+            }
+
+            String highlightChangedLines = null;
+            if(sb.length()>0)
+                highlightChangedLines = sb.substring(0, sb.length() - 1);
+
             diffView.add(new HighlighterPanel("highlightedContent",
                 new Model<String>(diffText),
                 parentPaste.getType(),
                 false,
                 highlightLines,
-                changedLines));
+                highlightChangedLines));
         }
         add(diffView);
 

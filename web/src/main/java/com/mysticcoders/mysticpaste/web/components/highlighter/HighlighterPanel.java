@@ -124,7 +124,7 @@ public class HighlighterPanel extends Panel {
      * @param localLanguage
      * @param highlightLines
      */
-    public HighlighterPanel(String id, final IModel<String> model, String localLanguage, final boolean excludeExternalResources, String highlightLines, final List<Integer> changedLines) {
+    public HighlighterPanel(String id, final IModel<String> model, String localLanguage, final boolean excludeExternalResources, String highlightLines, String changedLines) {
         super(id);
 
         this.language = localLanguage;
@@ -154,8 +154,12 @@ public class HighlighterPanel extends Panel {
         StringBuffer brushConfig = new StringBuffer("brush: ");
         brushConfig.append(language);
         brushConfig.append("; toolbar: false");
+        brushConfig.append("; highlight: [");
         if (highlightLines != null)
-            brushConfig.append("; highlight: [").append(highlightLines).append("]");
+            brushConfig.append(highlightLines);
+        if (changedLines != null)
+            brushConfig.append(changedLines);
+        brushConfig.append("]");
 
         codePanel.add(new AttributeModifier("class", true, new Model<String>(brushConfig.toString())));
 
