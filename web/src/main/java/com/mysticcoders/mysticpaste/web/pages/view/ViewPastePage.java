@@ -71,8 +71,8 @@ public abstract class ViewPastePage extends BasePage {
         }
 
         String highlightLines = null;
-        if (!params.get("1").isEmpty()) {
-            String[] lineNumbers = params.get(1).toString().split(",");
+        if (!params.get(0).isNull() && !params.get(0).isEmpty()) {
+            String[] lineNumbers = params.get(0).toString().split(",");
 
             List<String> numbers = new ArrayList<String>();
             for (String lineNumber : lineNumbers) {
